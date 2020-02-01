@@ -99,7 +99,7 @@ while loss>0.05:
     
     dv_dir,loss = tools.dir_by_ap_pe(3.6e7,3.1e7,apoapsis,periapsis,position,velocity_orb,vessel,conn)
     vessel.auto_pilot.target_direction=tuple(dv_dir)
-    vessel.control.throttle = np.min(loss,1.)
+    vessel.control.throttle = np.min([loss,1.])
     print("current loss is ",loss)
     vessel.auto_pilot.wait()
 
